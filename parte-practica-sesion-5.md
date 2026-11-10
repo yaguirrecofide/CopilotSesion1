@@ -294,3 +294,6 @@ Solo si tienes repositorio propio en GitHub y Copilot code review habilitado.
 - Mermaid · [classDiagram](https://mermaid.js.org/syntax/classDiagram.html)
 
 **Próxima sesión:** modo agente y Copilot coding agent en GitHub.
+
+
+
