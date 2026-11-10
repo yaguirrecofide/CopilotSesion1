@@ -13,4 +13,12 @@ public class ValidadorRucTests
     {
         Assert.Equal(esperado, ValidadorRuc.EsValido(ruc));
     }
+
+    [Fact]
+    public void Validar_RucInvalido_LanzaExcepcionConMensajeDescriptivo()
+    {
+        var exception = Assert.Throws<ArgumentException>(() => ValidadorRuc.Validar("2012345678A"));
+
+        Assert.Equal("El RUC proporcionado no es válido. (Parameter 'ruc')", exception.Message);
+    }
 }

@@ -11,10 +11,10 @@ public class ClienteRepository
     {
         using var conn = new SqlConnection(_connectionString);
         conn.Open();
-        var sql = "SELECT Nombre FROM Clientes WHERE Documento = '" + documento + "'";
+        const string sql = "SELECT Nombre FROM Clientes WHERE Documento = @documento";
         using var cmd = new SqlCommand(sql, conn);
-        var result = cmd.ExecuteScalar();
-        return result as string;
+        cmd.Parameters.AddWithValue("@documento", documento);
+        return cmd.ExecuteScalar()?.ToString();
     }
 
     // Busca un cliente por documento usando SqlCommand con parámetros (@documento) para evitar inyección SQL
@@ -29,4 +29,3 @@ public class ClienteRepository
         return result as string;
     }
 }
-    
