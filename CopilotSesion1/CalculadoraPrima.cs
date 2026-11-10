@@ -25,4 +25,24 @@ public static class CalculadoraPrima
             ? primaAnual * 0.95m
             : primaAnual;
     }
+
+    public static decimal PrimaAnualConRecargo(Poliza p)
+    {
+        return PrimaAnualConRecargo(p, siniestrosPrevios: 0);
+    }
+
+    public static decimal PrimaAnualConRecargo(Poliza p, int siniestrosPrevios)
+    {
+        if (siniestrosPrevios < 0)
+            throw new ArgumentOutOfRangeException(nameof(siniestrosPrevios));
+
+        decimal factor = siniestrosPrevios switch
+        {
+            0 => 1.00m,
+            1 or 2 => 1.10m,
+            _ => 1.25m
+        };
+
+        return Math.Round(CalcularPrimaAnual(p) * factor, 2);
+    }
 }
