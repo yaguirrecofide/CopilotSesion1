@@ -27,6 +27,11 @@ public static class ValidadorRuc
         return true;
     }
 
+    public static void Validar(string? ruc)
+    {
+        if (!EsValido(ruc))
+            throw new ArgumentException("El RUC proporcionado no es válido.", nameof(ruc));
+    }
 
     /// <summary>
     /// Gets the person type indicated by the RUC prefix.
