@@ -3,7 +3,7 @@ public class PolizaService
     // Devuelve las pólizas activas y vigentes en la fecha indicada
     public List<Poliza> FiltrarVigentes(List<Poliza>? polizas, DateOnly fecha)
     {
-        return polizas.Where(p => p.Activa && p.InicioVigencia <= fecha && p.FinVigencia >= fecha).ToList();
+        return polizas.Where(poliza => poliza.Activa && poliza.InicioVigencia <= fecha && poliza.FinVigencia >= fecha).ToList();
     }
 
     // Suma la prima mensual de las pólizas activas agrupadas por producto
